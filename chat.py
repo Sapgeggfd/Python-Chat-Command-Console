@@ -58,21 +58,3 @@ class Chat:
     def add_command(self, command): ...
 
     def autocomplete(self): ...
-
-
-# /give <?@player> <mod:itemID> <?amount> <?data>
-# /teleport <?@player> <?dimension> <pos>
-
-
-
-
-
-class GiveCommand(Command):
-    def __init__(self, player: Player) -> None:
-        super().__init__(player=player)
-        self.keyword = "give"
-        self.execute_func = give_item
-
-
-def give_item(player, item, amount, data):
-    print(f"gave {player.name} {item} ")
