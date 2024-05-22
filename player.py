@@ -1,5 +1,6 @@
 import uuid
-import item
+
+from helper_protocols import Item
 
 
 class Player:
@@ -23,7 +24,7 @@ class Player:
         self._pos = (0, 0)
         self.inventory = {}
 
-    def add_item(self, item: item.Item) -> None:
+    def add_item(self, item: Item) -> None:
         print(f"{self.name} received {item.itemID}")
         if item in self.inventory:
             self.inventory[item] += 1
