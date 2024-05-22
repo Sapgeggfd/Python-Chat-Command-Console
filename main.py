@@ -1,12 +1,12 @@
-from chat import Chat
+import commands
 import commands.give
 import commands.help
 import commands.teleport
+from chat import Chat
+from command_callbacks import give_player_item, tp_player
+from commandregistry import CommandRegistry
 from item import Item
 from player import Player
-from commandregistry import CommandRegistry
-import commands
-from command_callbacks import give_player_item, tp_player
 
 player1 = Player(name="Player1")
 player2 = Player(name="Player2")
@@ -31,29 +31,27 @@ def eacute_commands(command_registry: CommandRegistry):
 
 
 def chat_helloworld(chat: Chat):
-    chat.add_character(character="H")
-    chat.add_character(character="a")
-    chat.add_character(character="l")
-    chat.add_character(character="l")
-    chat.add_character(character="o")
-    # chat.add_character(" ")
-    chat.add_character(character="W")
-    chat.add_character(character="o")
-    chat.add_character(character="r")
-    chat.add_character(character="l")
-    chat.add_character(character="d")
 
-    print(chat.current_input)
-    chat.cursor_pos = 5
-    chat.insert_character_on_cursor_pos(character=" ")
-    print(chat.current_input)
+    txt = "HelloWorld"
+    for char in txt:
+        chat.insert_character(character=char)
+
+    chat.insert_character(character=" ", pos=5)
+    print(chat.get_input())
+    txt = "Hey Sapge"
+    for char in txt:
+        chat.insert_character(character=char)
+    print(chat.get_input())
+    print(chat._history)
 
 
 def main() -> None:
     chat = Chat(player=player1)
     register_commands(command_registry=chat.command_registry)
 
-    eacute_commands(command_registry=chat.command_registry)
+    chat_helloworld(chat)
+
+    # eacute_commands(command_registry=chat.command_registry)
 
 
 if __name__ == "__main__":
