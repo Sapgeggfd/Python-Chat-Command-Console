@@ -1,4 +1,4 @@
-from helper_protocols import Player, Item
+from pygchat.helper_protocols import Item, Player
 
 
 def give_player_item(player: Player, item: Item) -> None:
