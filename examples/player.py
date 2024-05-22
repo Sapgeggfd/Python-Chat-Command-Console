@@ -1,6 +1,6 @@
 import uuid
 
-from helper_protocols import Item
+from pygchat.helper_protocols import Item
 
 
 class Player:

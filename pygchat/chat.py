@@ -1,5 +1,5 @@
-from commandregistry import CommandRegistry
-from helper_protocols import Player
+from pygchat.commandregistry import CommandRegistry
+from pygchat.helper_protocols import Player
 
 
 class Chat:

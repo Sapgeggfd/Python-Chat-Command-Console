@@ -18,3 +18,7 @@ This project is a Python-based chat and command tool designed for integration in
 ## Installation
 
 1. Ensure you have Python 3.x installed.
+
+## Examples
+
+Examples are provided under [Examples](examples)

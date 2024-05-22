@@ -1,6 +1,7 @@
 from typing import Callable, override
-from .command import Command
-from .commadn_execeptions import MissingArgument
+
+from pygchat.commands.commadn_execeptions import MissingArgument
+from pygchat.commands.command import Command
 
 
 class GiveCommand(Command):
