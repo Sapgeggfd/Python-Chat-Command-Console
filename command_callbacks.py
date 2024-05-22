@@ -1,6 +1,5 @@
+from helper_protocols import Player, Item
 
-from item import Item
-from player import Player
 
 def give_player_item(player: Player, item: Item) -> None:
     player.add_item(item=item)
