@@ -1,12 +1,12 @@
-import commands
-import commands.give
-import commands.help
-import commands.teleport
-from chat import Chat
+import pygchat.commands
+import pygchat.commands.give
+import pygchat.commands.help
+import pygchat.commands.teleport
 from command_callbacks import give_player_item, tp_player
 from commandregistry import CommandRegistry
 from item import Item
 from player import Player
+from pygchat.chat import Chat
 
 player1 = Player(name="Player1")
 player2 = Player(name="Player2")
@@ -18,9 +18,9 @@ item_stone = Item(itemID="stone", display_name="Stone")
 def register_commands(command_registry: CommandRegistry) -> None:
     cr = command_registry
 
-    cr.register_command(command=commands.help.HelpCommand(command_registry=cr))
-    cr.register_command(command=commands.give.GiveCommand(callback=give_player_item))
-    cr.register_command(command=commands.teleport.TeleportCommand(callback=tp_player))
+    cr.register_command(command=pygchat.commands.help.HelpCommand(command_registry=cr))
+    cr.register_command(command=pygchat.commands.give.GiveCommand(callback=give_player_item))
+    cr.register_command(command=pygchat.commands.teleport.TeleportCommand(callback=tp_player))
 
 
 def eacute_commands(command_registry: CommandRegistry):
