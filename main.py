@@ -15,19 +15,22 @@ item_dirt = Item(itemID="dirt", display_name="Dirt")
 item_stone = Item(itemID="stone", display_name="Stone")
 
 
-def command_register() -> CommandRegistry:
-    cr = CommandRegistry()
+def register_commands(command_registry: CommandRegistry) -> None:
+    cr = command_registry
 
     cr.register_command(command=commands.help.HelpCommand(command_registry=cr))
     cr.register_command(command=commands.give.GiveCommand(callback=give_player_item))
     cr.register_command(command=commands.teleport.TeleportCommand(callback=tp_player))
 
-    return cr
+
+def eacute_commands(command_registry: CommandRegistry):
+    cr = command_registry
+    cr.execute_command(name="help")
+    cr.execute_command(name="give", player=player1, item=item_stone)
+    cr.execute_command(name="teleport", player=player1, pos=(10, 10))
 
 
-def main_chat() -> None:
-    chat = Chat(player1)
-
+def chat_helloworld(chat: Chat):
     chat.add_character(character="H")
     chat.add_character(character="a")
     chat.add_character(character="l")
@@ -47,10 +50,10 @@ def main_chat() -> None:
 
 
 def main() -> None:
-    cr = command_register()
-    cr.execute_command(name="help")
-    cr.execute_command(name="give", player=player1, item=item_stone)
-    cr.execute_command(name="teleport", player=player1, pos=(10, 10))
+    chat = Chat(player=player1)
+    register_commands(command_registry=chat.command_registry)
+
+    eacute_commands(chat.command_registry)
 
 
 if __name__ == "__main__":

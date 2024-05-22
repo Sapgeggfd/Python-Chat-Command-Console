@@ -1,4 +1,5 @@
 from typing import Any, Callable, LiteralString, Optional
+from commandregistry import CommandRegistry
 from player import Player
 
 
@@ -9,7 +10,7 @@ class Chat:
     _history: list[str]
     _current_input: list
 
-    _commands: list  # list of all registered commands
+    command_registry: CommandRegistry  # list of all registered commands
     _command_prefix: str
 
     autocomplete_hints: list
@@ -34,7 +35,12 @@ class Chat:
     # End of Properties #
     #####################
 
-    def __init__(self, player: Player, command_prefix="/") -> None:
+    def __init__(
+        self,
+        player: Player,
+        command_prefix="/",
+        command_registry: CommandRegistry = CommandRegistry(),
+    ) -> None:
         # Game
         self.player = player
 
@@ -45,7 +51,7 @@ class Chat:
 
         # Command Stuff
         self._command_prefix = command_prefix
-        self.autocomplete_hints = []
+        self.command_registry = command_registry
 
     def insert_character_on_cursor_pos(self, character: str) -> None:
         self._current_input.insert(self.cursor_pos, character)
