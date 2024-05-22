@@ -2,7 +2,7 @@
 
 ## License
 
-This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the CC-BY-4.0 License - see the [LICENSE](LICENSE) file for details.
 
 ## Overview
 
