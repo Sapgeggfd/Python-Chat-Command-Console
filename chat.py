@@ -1,14 +1,13 @@
-from typing import Any, Callable, LiteralString, Optional
 from commandregistry import CommandRegistry
-from player import Player
+from helper_protocols import Player
 
 
 class Chat:
     player: Player  # Reference to the game Player Object
 
     _curser_pos: int
-    _history: list[str]
-    _current_input: list
+    _history: list[list[str]]
+    _current_input: list[str]
 
     command_registry: CommandRegistry  # list of all registered commands
     _command_prefix: str
@@ -24,12 +23,14 @@ class Chat:
         return self._curser_pos
 
     @cursor_pos.setter
-    def cursor_pos(self, value) -> None:
-        self._curser_pos = value
-
-    @property
-    def current_input(self) -> LiteralString:
-        return "".join(self._current_input)
+    def cursor_pos(self, new_cursor_pos: int) -> None:
+        l = len(self._current_input)
+        if new_cursor_pos > l:
+            self._curser_pos = l
+        elif new_cursor_pos <= 0:
+            self._curser_pos = 0
+        else:
+            self._curser_pos = new_cursor_pos
 
     #####################
     # End of Properties #
@@ -53,12 +54,18 @@ class Chat:
         self._command_prefix = command_prefix
         self.command_registry = command_registry
 
-    def insert_character_on_cursor_pos(self, character: str) -> None:
-        self._current_input.insert(self.cursor_pos, character)
-
-    def add_character(self, character: str) -> None:
-        self._current_input.append(character)
+    def insert_character(self, character: str, pos=None) -> None:
+        if pos:
+            self._current_input.insert(pos, character)
+        else:
+            self._current_input.insert(self.cursor_pos, character)
         self.cursor_pos += 1
+
+    def get_input(self):
+        self._history.append(self._current_input)
+        ret = self._current_input
+        self._current_input = []
+        return "".join(ret)
 
     def remove_character(self): ...
     def add_command(self, command): ...
