@@ -6,20 +6,13 @@ from item import Item
 from player import Player
 from commandregistry import CommandRegistry
 import commands
+from command_callbacks import give_player_item, tp_player
 
 player1 = Player(name="Player1")
 player2 = Player(name="Player2")
 
 item_dirt = Item(itemID="dirt", display_name="Dirt")
 item_stone = Item(itemID="stone", display_name="Stone")
-
-
-def give_player_item(player: Player, item: Item) -> None:
-    player.add_item(item=item)
-
-
-def tp_player(player: Player, pos: tuple[int, int]) -> None:
-    player.pos = pos
 
 
 def command_register() -> CommandRegistry:
@@ -57,7 +50,7 @@ def main() -> None:
     cr = command_register()
     cr.execute_command(name="help")
     cr.execute_command(name="give", player=player1, item=item_stone)
-    cr.execute_command(name="teleport", player=player1, pos=(10,10))
+    cr.execute_command(name="teleport", player=player1, pos=(10, 10))
 
 
 if __name__ == "__main__":
