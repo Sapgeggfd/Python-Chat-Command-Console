@@ -2,11 +2,11 @@ import pygchat.commands
 import pygchat.commands.give
 import pygchat.commands.help
 import pygchat.commands.teleport
-from command_callbacks import give_player_item, tp_player
-from commandregistry import CommandRegistry
 from item import Item
 from player import Player
 from pygchat.chat import Chat
+from pygchat.command_callbacks import give_player_item, tp_player
+from pygchat.commandregistry import CommandRegistry
 
 player1 = Player(name="Player1")
 player2 = Player(name="Player2")
