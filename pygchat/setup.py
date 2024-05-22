@@ -9,7 +9,7 @@ setup(
     name="pygchat",
     version=version,
     description="A Chat System to Use in Python games",
-    long_description=open("README.md").read(),
+    long_description=open("../README.md").read(),
     long_description_content_type="text/markdown",
     author="Sapge",
     author_email="sapge.ggfd@gmail.com",
