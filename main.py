@@ -53,7 +53,7 @@ def main() -> None:
     chat = Chat(player=player1)
     register_commands(command_registry=chat.command_registry)
 
-    eacute_commands(chat.command_registry)
+    eacute_commands(command_registry=chat.command_registry)
 
 
 if __name__ == "__main__":
