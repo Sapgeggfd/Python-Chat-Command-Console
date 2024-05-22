@@ -40,8 +40,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.VERSION }}
-          release_name: ${{ env.VERSION }}
+          tag_name: Module ${{ env.VERSION }}
+          release_name: Realese ${{ env.VERSION }}
           draft: false
           prerelease: false
 
