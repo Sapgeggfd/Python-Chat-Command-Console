@@ -22,8 +22,6 @@ jobs:
 
       - name: Select files to push
         run: |
-          # Replace with the actual paths to the files you want to push
-          mkdir selected_files
           cp -r pygchat selected_files/
           cp README.md selected_files/
 
@@ -32,7 +30,7 @@ jobs:
           cd selected_files
           git init
           git remote add origin https://github.com/${{ github.repository }}.git
-          git checkout -b target-branch  # Replace 'target-branch' with your target branch
+          git checkout -b Releases
           git add .
           git commit -m "Add selected files on tag ${{ github.ref_name }}"
 
@@ -41,4 +39,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd selected_files
-          git push origin target-branch --force  # Replace 'target-branch' with your target branch
+          git push origin Releases --force
