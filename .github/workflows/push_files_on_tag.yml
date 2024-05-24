@@ -34,17 +34,9 @@ jobs:
           git add .
           git commit -m "Add selected files on tag ${{ github.ref_name }}"
           
-
-      - name: Git Test
+      - name: Push to Releases branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git remote -v
-      - name: Push to target branch
-        run: |
-          git config --global user.name "${{ github.actor }}"
-          echo 1
-          git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
-          echo 2
           cd selected_files
-          echo 3
-          git push origin Releases --force
-          echo 4
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git Releases --force
