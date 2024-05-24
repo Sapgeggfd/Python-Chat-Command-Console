@@ -35,7 +35,7 @@ jobs:
           git commit -m "Add selected files on tag ${{ github.ref_name }}"
 
       - name: Push to target branch
-        env:
+        with:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           cd selected_files
