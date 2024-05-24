@@ -1,0 +1,44 @@
+name: Push Files on Tag
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Trigger on version tags like v1.0.0, v2.1.0, etc.
+
+jobs:
+  push_files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensure the full history is fetched so we can access tags
+
+      - name: Set up Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Select files to push
+        run: |
+          # Replace with the actual paths to the files you want to push
+          mkdir selected_files
+          cp -r pygchat selected_files/
+          cp README.md selected_files/
+
+      - name: Commit selected files
+        run: |
+          cd selected_files
+          git init
+          git remote add origin https://github.com/${{ github.repository }}.git
+          git checkout -b target-branch  # Replace 'target-branch' with your target branch
+          git add .
+          git commit -m "Add selected files on tag ${{ github.ref_name }}"
+
+      - name: Push to target branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd selected_files
+          git push origin target-branch --force  # Replace 'target-branch' with your target branch
