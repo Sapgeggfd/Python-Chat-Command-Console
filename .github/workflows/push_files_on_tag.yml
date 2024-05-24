@@ -24,7 +24,6 @@ jobs:
         run: |
           mkdir selected_files
           cd selected_files
-          mkdir pygchat
 
       - name: Select files to push
         run: |
