@@ -37,6 +37,10 @@ jobs:
       - name: Push to target branch
         run: |
           git config --global user.name "${{ github.actor }}"
+          echo 1
           git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          echo 2
           cd selected_files
+          echo 3
           git push origin Releases --force
+          echo 4
