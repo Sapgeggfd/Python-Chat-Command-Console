@@ -2,8 +2,8 @@ name: Push Files on Tag
 
 on:
   push:
-    tags:
-      - 'v*.*.*'  # Trigger on version tags like v1.0.0, v2.1.0, etc.
+    # tags:
+    #   - 'v*.*.*'  # Trigger on version tags like v1.0.0, v2.1.0, etc.
 
 jobs:
   push_files:
