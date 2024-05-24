@@ -34,6 +34,10 @@ jobs:
           git add .
           git commit -m "Add selected files on tag ${{ github.ref_name }}"
           
+
+      - name: Git Test
+        run: |
+          git remote -v
       - name: Push to target branch
         run: |
           git config --global user.name "${{ github.actor }}"
