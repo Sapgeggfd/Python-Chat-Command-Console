@@ -37,13 +37,10 @@ class Chat:
     #####################
 
     def __init__(
-        self,
-        player: Player,
-        command_prefix="/",
-        command_registry: CommandRegistry = CommandRegistry(),
+        self, issuer: Player, command_prefix="/", command_registry: CommandRegistry = CommandRegistry()
     ) -> None:
         # Game
-        self.player = player
+        self.player = issuer
 
         # Chat System
         self._curser_pos = 0
@@ -61,9 +58,9 @@ class Chat:
             self._current_input.insert(self.cursor_pos, character)
         self.cursor_pos += 1
 
-    def get_input(self):
+    def get_input(self) -> str:
         self._history.append(self._current_input)
-        ret = self._current_input
+        ret: list[str] = self._current_input
         self._current_input = []
         return "".join(ret)
 
