@@ -36,5 +36,7 @@ jobs:
 
       - name: Push to target branch
         run: |
+          git config --system --list
+          sudo ln -s $HOME/.gitconfig /etc/gitconfig
           cd selected_files
           git push origin Releases --force
