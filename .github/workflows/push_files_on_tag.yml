@@ -2,8 +2,10 @@ name: Push Files on Tag
 
 on:
   push:
-    # tags:
-    #   - 'v*.*.*'  # Trigger on version tags like v1.0.0, v2.1.0, etc.
+    branches:
+      - main
+    tags:
+      - 'v*.*.*'  # Trigger on version tags like v1.0.0, v2.1.0, etc.
 
 jobs:
   push_files:
@@ -81,8 +83,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./pygchat/dist/pygchat-${{ env.VERSION }}-py3-none-any.whl
-          asset_name: pygchat-${{ env.VERSION }}-py3-none-any.whl
+          asset_path: ./pygchat/dist/pygchat-${{ env.VERSION }}-py3.whl
+          asset_name: pygchat-${{ env.VERSION }}-py3.whl
           asset_content_type: application/zip
 
       - name: Upload Source Distribution
