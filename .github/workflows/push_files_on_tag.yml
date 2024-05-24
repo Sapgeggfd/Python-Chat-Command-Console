@@ -7,10 +7,12 @@ on:
 
 jobs:
   push_files:
-    if: endsWith(github.event.base_ref, 'main') == true
+    if: github.event.base_ref
     runs-on: ubuntu-latest
 
     steps:
+      - name: test
+        run: echo ${{github.event.base_ref}}
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
