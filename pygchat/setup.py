@@ -13,7 +13,7 @@ setup(
     long_description_content_type="text/markdown",
     author="Sapge",
     author_email="sapge.ggfd@gmail.com",
-    url="https://github.com/yourusername/your-repo",
+    url="https://github.com/Sapgeggfd/Python-Chat-Command-Console",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

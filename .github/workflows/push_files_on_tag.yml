@@ -83,8 +83,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./pygchat/dist/pygchat-${{ env.VERSION }}-py3.whl
-          asset_name: pygchat-${{ env.VERSION }}-py3.whl
+          
+          asset_path: ./pygchat/dist/pygchat-${{ env.VERSION }}-py3-none-any.whl
+          asset_name: pygchat-${{ env.VERSION }}-py3-none-any.whl
           asset_content_type: application/zip
 
       - name: Upload Source Distribution
