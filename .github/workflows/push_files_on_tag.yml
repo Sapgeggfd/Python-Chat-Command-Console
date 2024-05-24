@@ -7,7 +7,7 @@ on:
 
 jobs:
   push_files:
-    if: github.base_ref == 'main'
+    if: endsWith(github.event.base_ref, 'main') == true
     runs-on: ubuntu-latest
 
     steps:
