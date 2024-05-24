@@ -33,12 +33,9 @@ jobs:
           git checkout -b Releases
           git add .
           git commit -m "Add selected files on tag ${{ github.ref_name }}"
-
-      - name: Test GIT
-        run: |
-          git --version
+          
       - name: Push to target branch
         run: |
-          git config --system --list
           cd selected_files
+          git push
           git push origin Releases --force
