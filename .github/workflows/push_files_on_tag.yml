@@ -7,7 +7,6 @@ on:
 
 jobs:
   push_files:
-    if: github.event.base_ref
     runs-on: ubuntu-latest
 
     steps:
