@@ -37,5 +37,4 @@ jobs:
       - name: Push to target branch
         run: |
           cd selected_files
-          git push
-          git push origin Releases --force
+          git push --set-upstream origin Releases --force
