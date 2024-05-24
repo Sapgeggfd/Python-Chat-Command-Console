@@ -20,12 +20,6 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
 
-      - name: Setup Folder
-        run: |
-          mkdir selected_files
-          cd selected_files
-          mkdir pygchat
-          cd ..
       - name: Select files to push
         run: |
           cp -r pygchat selected_files/pygchat
